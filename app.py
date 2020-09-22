@@ -65,8 +65,8 @@ def add_user():
     _price = _form['price']
     _image = request.files["image"]
     _imagePath = app.config["UPLOADS_FOLDER"]
-    print(_image.filename)
-    return _image.filename
+    # print(_image.filename)
+    return _price
 		# validate the received values
 	# 	if _name and _description and _price and request.method == 'POST':
 			    			
