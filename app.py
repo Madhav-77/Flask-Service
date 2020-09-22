@@ -65,41 +65,42 @@ def add_user():
 		_price = _form['price']
 		_image = request.files["image"]
 		_imagePath = app.config["UPLOADS_FOLDER"]
-
+        print(_image.filename)
+        return _image.filename
 		# validate the received values
-		if _name and _description and _price and request.method == 'POST':
+	# 	if _name and _description and _price and request.method == 'POST':
 			    			
-			# validate file
-			if file_check(_image):
+	# 		# validate file
+	# 		if file_check(_image):
 
-				# updating file name with uuid4 
-				filename = str(uuid.uuid4())
-				filename += "."
-				filename += _image.filename.split(".")[1]
+	# 			# updating file name with uuid4 
+	# 			filename = str(uuid.uuid4())
+	# 			filename += "."
+	# 			filename += _image.filename.split(".")[1]
 				
-				# securing file name for avoiding injections
-				filename_secure = secure_filename(filename)
-				_image.save(os.path.join(app.config["UPLOADS_FOLDER"], filename_secure))
+	# 			# securing file name for avoiding injections
+	# 			filename_secure = secure_filename(filename)
+	# 			_image.save(os.path.join(app.config["UPLOADS_FOLDER"], filename_secure))
 				
-				# save edits
-				sql = "INSERT INTO inventory(name, description, price, image, image_path) VALUES(%s, %s, %s, %s, %s)"
-				data = (_name, _description, _price, filename_secure, _imagePath,)
-				conn = mysql.connect()
-				cursor = conn.cursor()
-				cursor.execute(sql, data)
-				conn.commit()
-				resp = jsonify('User added successfully!')
-				resp.status_code = 200
-				return resp
-			else:
-				return not_found()
-		else:
-			redirect(request.url)
-	except Exception as e:
-		print(e)
-	finally:
-		cursor.close() 
-		conn.close()
+	# 			# save edits
+	# 			sql = "INSERT INTO inventory(name, description, price, image, image_path) VALUES(%s, %s, %s, %s, %s)"
+	# 			data = (_name, _description, _price, filename_secure, _imagePath,)
+	# 			conn = mysql.connect()
+	# 			cursor = conn.cursor()
+	# 			cursor.execute(sql, data)
+	# 			conn.commit()
+	# 			resp = jsonify('User added successfully!')
+	# 			resp.status_code = 200
+	# 			return resp
+	# 		else:
+	# 			return not_found()
+	# 	else:
+	# 		redirect(request.url)
+	# except Exception as e:
+	# 	print(e)
+	# finally:
+	# 	cursor.close() 
+	# 	conn.close()
 
 # get image from the api
 @app.route('/get-image/<filename>')
