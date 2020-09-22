@@ -58,9 +58,9 @@ def file_check(image):
 # adds data received to database
 @app.route('/add', methods=['POST', 'GET'])
 def add_user():
-	# _form = request.form
+    _form = request.form
     _image = request.files["image"]
-    return _image.filename
+    return _form['name']
     # try:
 	# 	# getting req from a form
 	# 	_form = request.form
