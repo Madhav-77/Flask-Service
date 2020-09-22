@@ -150,7 +150,7 @@ def item(id):
 		conn.close()
 
 # updates item on the data base
-@app.route('/update', methods=['PUT'])
+@app.route('/update', methods=['PUT', 'GET'])
 def update_item():
 	""" _json = request.json
 	_id = _json['id']
