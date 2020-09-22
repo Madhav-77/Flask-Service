@@ -4,9 +4,10 @@ from flask import Flask, jsonify, flash, request, redirect, url_for, render_temp
 from werkzeug.utils import secure_filename
 import os
 from flaskext.mysql import MySQL
-
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["UPLOADS_FOLDER"] = "/uploads"
 app.config["ALLOWED_EXTENSIONS"] = ["png", "jpg", "jpeg"]
