@@ -60,7 +60,7 @@ def file_check(image):
 def add_user():
     _form = request.form
     _image = request.files["image"]
-    return _form['name']
+    return request.files["image"].filename
     # try:
 	# 	# getting req from a form
 	# 	_form = request.form
