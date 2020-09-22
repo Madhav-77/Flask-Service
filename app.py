@@ -57,53 +57,50 @@ def file_check(image):
 
 # adds data received to database
 @app.route('/add', methods=['POST', 'GET'])
-def add_user():
-	# _form = request.form
-    _image = request.files["image"]
-    return _image.filename
-    # try:
-	# 	# getting req from a form
-	# 	_form = request.form
-	# 	_name = _form['name']
-	# 	_description = _form['description']
-	# 	_price = _form['price']
-	# 	_image = request.files["image"]
-	# 	_imagePath = app.config["UPLOADS_FOLDER"]
+def add_item():
+	try:
+		# getting req from a form
+		_form = request.form
+		_name = _form['name']
+		_description = _form['description']
+		_price = _form['price']
+		_image = request.files["image"]
+		_imagePath = app.config["UPLOADS_FOLDER"]
 
-	# 	# validate the received values
-	# 	if _name and _description and _price and request.method == 'POST':
-			    			
-	# 		# validate file
-	# 		if file_check(_image):
+		# validate the received values
+		if _name and _description and _price and request.method == 'POST':
+			
+            # print("in validaiton input")
+			if file_check(_image):
 
-	# 			# updating file name with uuid4 
-	# 			filename = str(uuid.uuid4())
-	# 			filename += "."
-	# 			filename += _image.filename.split(".")[1]
+				# updating file name with uuid4 
+				filename = str(uuid.uuid4())
+				filename += "."
+				filename += _image.filename.split(".")[1]
 				
-	# 			# securing file name for avoiding injections
-	# 			filename_secure = secure_filename(filename)
-	# 			_image.save(os.path.join(app.config["UPLOADS_FOLDER"], filename_secure))
+				# securing file name for avoiding injections
+				filename_secure = secure_filename(filename)
+				_image.save(os.path.join(app.config["UPLOADS_FOLDER"], filename_secure))
 				
-	# 			# save edits
-	# 			sql = "INSERT INTO inventory(name, description, price, image, image_path) VALUES(%s, %s, %s, %s, %s)"
-	# 			data = (_name, _description, _price, filename_secure, _imagePath,)
-	# 			conn = mysql.connect()
-	# 			cursor = conn.cursor()
-	# 			cursor.execute(sql, data)
-	# 			conn.commit()
-	# 			resp = jsonify('User added successfully!')
-	# 			resp.status_code = 200
-	# 			return resp
-	# 		else:
-	# 			return not_found()
-	# 	else:
-	# 		redirect(request.url)
-	# except Exception as e:
-	# 	print(e)
-	# finally:
-	# 	cursor.close() 
-	# 	conn.close()
+				# save edits
+				sql = "INSERT INTO inventory(name, description, price, image, image_path) VALUES(%s, %s, %s, %s, %s)"
+				data = (_name, _description, _price, filename_secure, _imagePath,)
+				conn = mysql.connect()
+				cursor = conn.cursor()
+				cursor.execute(sql, data)
+				conn.commit()
+				resp = jsonify('User added successfully!')
+				resp.status_code = 200
+				return resp
+			else:
+				return not_found()
+		else:
+			redirect(request.url)
+	except Exception as e:
+		print(e)
+	finally:
+		cursor.close() 
+		conn.close()
 
 # get image from the api
 @app.route('/get-image/<filename>')
@@ -119,7 +116,7 @@ def display_image(filename):
 
 # fetches all the data from the database
 @app.route('/items')
-def users():
+def items():
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
@@ -136,7 +133,7 @@ def users():
 
 # fetches signgle item data from the db  
 @app.route('/item/<int:id>')
-def user(id):
+def item(id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
@@ -153,7 +150,7 @@ def user(id):
 
 # updates item on the data base
 @app.route('/update', methods=['PUT'])
-def update_user():
+def update_item():
 	""" _json = request.json
 	_id = _json['id']
 	print(_json['id'])
@@ -217,7 +214,7 @@ def update_user():
 		
 # deletes item from the db
 @app.route('/delete/<int:id>', methods=['DELETE'])
-def delete_user(id):
+def delete_(id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor()
