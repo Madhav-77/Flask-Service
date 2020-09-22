@@ -57,16 +57,16 @@ def file_check(image):
 # adds data received to database
 @app.route('/add', methods=['POST', 'GET'])
 def add_user():
-	try:
-		# getting req from a form
-		_form = request.form
-		_name = _form['name']
-		_description = _form['description']
-		_price = _form['price']
-		_image = request.files["image"]
-		_imagePath = app.config["UPLOADS_FOLDER"]
-        print(_image.filename)
-        return _image.filename
+	# try:
+    # getting req from a form
+    _form = request.form
+    _name = _form['name']
+    _description = _form['description']
+    _price = _form['price']
+    _image = request.files["image"]
+    _imagePath = app.config["UPLOADS_FOLDER"]
+    print(_image.filename)
+    return _image.filename
 		# validate the received values
 	# 	if _name and _description and _price and request.method == 'POST':
 			    			
