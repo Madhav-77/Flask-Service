@@ -223,6 +223,8 @@ def delete_(id):
 		conn.commit()
 		resp = jsonify('User deleted successfully!')
 		resp.status_code = 200
+		# if(resp.status_code == 200):
+		# 	os.remove(os.path.join(app.config['UPLOADS_FOLDER'], item.filename))
 		return resp
 	except Exception as e:
 		print(e)
