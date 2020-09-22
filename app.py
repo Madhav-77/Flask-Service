@@ -8,7 +8,7 @@ from flaskext.mysql import MySQL
 
 app = Flask(__name__)
 
-app.config["UPLOADS_FOLDER"] = "C:/Users/madha/Angular/FlaskServices3/uploads"
+app.config["UPLOADS_FOLDER"] = "/uploads"
 app.config["ALLOWED_EXTENSIONS"] = ["png", "jpg", "jpeg"]
 
 
