@@ -31,8 +31,8 @@ Download and setup that goes with your system [Xampp](https://www.apachefriends.
 - Download the .sql file
 - Start the apache server and MySql from xampp controller 
 - Go to your browser and enter localhost/ 
-- Create database with the name of 'inventory'
-- Import the .sql file to your database 
+- Create database
+- Import the .sql table file to your database 
 
 #### Accessing the project
 In browser, navigate to this [URL](HTTP://127.0.0.1:5200)
