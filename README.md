@@ -23,7 +23,7 @@ pip install Flask-MySQL
 pip install Flask-UUID
 ```
 
-#Usage
+# Usage
 
 Download and setup that goes with your system [Xampp](https://www.apachefriends.org/download.html).
 
