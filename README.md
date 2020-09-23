@@ -16,14 +16,14 @@ Download the code and store it in a directory.
 
 Navigate to that directory and install the following packages by running these commands: 
 
-## Usage
-
 ```
 pip install Flask
 pip install Flask-Cors
 pip install Flask-MySQL
 pip install Flask-UUID
 ```
+
+#Usage
 
 Download and setup that goes with your system [Xampp](https://www.apachefriends.org/download.html).
 
@@ -34,7 +34,7 @@ Download and setup that goes with your system [Xampp](https://www.apachefriends.
 - Create database with the name of 'inventory'
 - Import the .sql file to your database 
 
-## Accessing the project
+#### Accessing the project
 In browser, navigate to this [URL](HTTP://127.0.0.1:5200)
 
 - HTTP://127.0.0.1:5200/ - Home route
