@@ -14,18 +14,18 @@ app.config["ALLOWED_EXTENSIONS"] = ["png", "jpg", "jpeg"]
 mysql = MySQL()
 
 # local MySQL configurations 
-#app.config["UPLOADS_FOLDER"] = "./uploads"
-#app.config['MYSQL_DATABASE_USER'] = 'root'
-#app.config['MYSQL_DATABASE_PASSWORD'] = ''
-#app.config['MYSQL_DATABASE_DB'] = 'shop_bridge'
-#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+# app.config["UPLOADS_FOLDER"] = "./uploads"
+# app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_PASSWORD'] = ''
+# app.config['MYSQL_DATABASE_DB'] = 'shop_bridge'
+# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 # prod MySQL configurations 
- app.config["UPLOADS_FOLDER"] = "./uploads"
- app.config['MYSQL_DATABASE_USER'] = 'sql12371333'
- app.config['MYSQL_DATABASE_PASSWORD'] = 'QjErlqVTyq'
- app.config['MYSQL_DATABASE_DB'] = 'sql12371333'
- app.config['MYSQL_DATABASE_HOST'] = 'sql12.freesqldatabase.com'
+app.config["UPLOADS_FOLDER"] = "./uploads"
+app.config['MYSQL_DATABASE_USER'] = 'sql12371333'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'QjErlqVTyq'
+app.config['MYSQL_DATABASE_DB'] = 'sql12371333'
+app.config['MYSQL_DATABASE_HOST'] = 'sql12.freesqldatabase.com'
 
 mysql.init_app(app)
 
